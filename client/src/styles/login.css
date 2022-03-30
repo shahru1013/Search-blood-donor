@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    min-width: 530px;
+}
+.login-form-container{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.login-form form{
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-form input[type="text"], input[type="password"] {
+    font: inherit;
+    letter-spacing: inherit;
+    color: currentColor;
+    padding: 4px 0 5px;
+    border: 0;
+    box-sizing: content-box;
+    height: 1.4375em;
+    margin: 0;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 14px 0px;
+    text-indent: 10px;
+}
+
+.login-form input:focus{
+    outline: none;
+}
+
+.login-form input[type="submit"]{
+    color: #fff;
+    background-color: #1976d2;
+    width: 100%;
+    margin-top: 24px;
+    outline: 0;
+    border: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+.signup-button{
+    display: flex;
+}
+.signup-button button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    color: #fff;
+    margin-left: auto;
+    width: 100%;
+    text-align: right;
+    padding-right: 5%;
+}
+.title-container{
+    width: 97%;
+    padding-bottom: 10%;
+}
+.title{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0px 2px 3px 1px rgb(83, 80, 80);
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:530px) {
+    .login-container{
+         min-width: 100%;
+    }
+}
