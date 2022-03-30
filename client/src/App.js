@@ -1,7 +1,31 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import {
+   Route,
+   BrowserRouter,
+   Routes,
+   Navigate
+} from 'react-router-dom';
+import { Login } from './pages/login/component';
+import { Signup } from './pages/signup/component';
+import { Welcome } from './pages/welcome/component';
 
-export default function App() {
+function App({_isLogged}) {
   return (
-    <div>App</div>
+     <BrowserRouter>
+       <Routes>
+          <Route exact path='/' element = { _isLogged ? <Welcome/> : <Login/> }/>
+          <Route path='/login' element = { _isLogged ? <Navigate to = "/"/>: <Login/> }/>
+          <Route path='/signup' element = { _isLogged ? <Navigate to = "/"/>: <Signup/> }/>
+       </Routes>
+     </BrowserRouter>
   )
 }
+const _mapStateToProps = (state)=>{
+  console.log(state["pages/login"])
+  return{
+      _isLogged: state["pages/login"].isLogged
+  }
+}
+
+export default connect(_mapStateToProps)(App)
