@@ -3,10 +3,10 @@
  * -api/signup/addUser
  */
 const router = require("express").Router();
-router.get('/addUser', async (req, res)=>{
-    res.send({
-        res: true
-    })
-})
+const dbConnection = require('../models/db');
+const registerUser  = require("../models/insertTables");
+router.post('/addUser', async (req, res)=>{
+    await registerUser(req.body.formData, dbConnection, res);
+});
 
 module.exports = router;

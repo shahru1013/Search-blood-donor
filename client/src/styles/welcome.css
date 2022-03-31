@@ -1,0 +1,19 @@
+.welcome{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    color: #fff;
+    opacity: 0.7;
+    background: #4c4040;
+    padding: 30px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 2px 1px #90cb90;
+}

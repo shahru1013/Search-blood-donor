@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from 'axios';
 import { connect } from 'react-redux'
-import { checkUserValidity, validateLoginData } from "../pages/login/functions";
+import { checkUserValidity, validateFormData } from "../pages/login/functions";
 import "../styles/login.css";
-import { setUserLogged , incr} from "../pages/login/action";
-
-function LoginForm( { updateLogin } ) {
+import { setUserLogged, setUserData} from "../pages/login/action";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+function LoginForm( { updateLogin, updateUserData } ) {
   const [redirectSignup, setRedirectSignup] = useState(false);
   const [validationErr, setValidationErr] = useState({});
   const [formData, setFormData] = useState({});
@@ -14,14 +15,17 @@ function LoginForm( { updateLogin } ) {
   const handleLoginForm= async (e)=>{
      e.preventDefault();
      setValidationErr({});
-     const validateResult = validateLoginData(formData?.email, formData?.password);
+     const validateResult = validateFormData(formData?.email, formData?.password);
      if(Object.keys(validateResult).length){ 
        setErrMessage(validateResult);
      }else{
        const loginStatus = await checkUserValidity(formData,axios);
-       if(loginStatus){
-          setFormData({})
-          updateLogin(true);
+       if(loginStatus.res){
+           setFormData({})
+           updateLogin(true);
+           updateUserData(loginStatus.user)
+       }else{
+          toast("Invalid Credentials!")
        }
        /**Handle what if login success */
      }
@@ -42,7 +46,7 @@ function LoginForm( { updateLogin } ) {
     <div className="login-form-container">
       <div className="title-container">
         <div className="title">
-          <span onClick={()=>console.log('ha',validationErr)}>SignIn</span>
+          <span>LogIn</span>
         </div>
       </div>
       <div className="login-form">
@@ -68,6 +72,19 @@ function LoginForm( { updateLogin } ) {
         </button>
       </div>
       {redirectSignup && <Navigate to="/signup" />}
+      <div className="toast-mesage" style={{ position: 'absolute' }}>
+        `<ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          />`
+       </div>
     </div>
   );
 }
@@ -75,8 +92,11 @@ function LoginForm( { updateLogin } ) {
 const _mapDispatchToProps = (dispatch) =>{
     return{
        updateLogin: (val)=>{
-         dispatch(setUserLogged(val))
+         dispatch(setUserLogged(val));
        },
+       updateUserData: (val)=>{
+         dispatch(setUserData(val));
+       }
     }
 }
 export default connect(null,_mapDispatchToProps)(LoginForm);
