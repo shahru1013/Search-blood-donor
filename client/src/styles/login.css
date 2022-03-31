@@ -99,7 +99,13 @@
     justify-content: center;
     align-items: center;
 }
-
+.err-boundary{
+    font-size: 12px;
+    color: red;
+    opacity: 0.7;
+    text-align: center;
+    padding: 10px;
+}
 @media screen and (max-width:530px) {
     .login-container{
          min-width: 100%;
