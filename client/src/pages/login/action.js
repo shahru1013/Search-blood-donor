@@ -9,6 +9,6 @@ import {
 export const setUserLogged =(isLogged)=>{
    return{
       type: SET_USER_LOGGED,
-      isLogged: isLogged
+      isLogged
    }
 }

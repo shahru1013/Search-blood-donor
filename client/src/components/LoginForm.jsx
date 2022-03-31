@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { checkUserValidity, validateLoginData } from "../pages/login/functions";
 import "../styles/login.css";
 import { setUserLogged , incr} from "../pages/login/action";
-function LoginForm( props ) {
+
+function LoginForm( { updateLogin } ) {
   const [redirectSignup, setRedirectSignup] = useState(false);
   const [validationErr, setValidationErr] = useState({});
   const [formData, setFormData] = useState({});
@@ -19,9 +20,8 @@ function LoginForm( props ) {
      }else{
        const loginStatus = await checkUserValidity(formData,axios);
        if(loginStatus){
-          alert('login success')
           setFormData({})
-          //props.dispatch(setUserLogged(true))
+          updateLogin(true);
        }
        /**Handle what if login success */
      }
@@ -72,9 +72,11 @@ function LoginForm( props ) {
   );
 }
 
-const _mapStateToProps = (state) =>{
+const _mapDispatchToProps = (dispatch) =>{
     return{
+       updateLogin: (val)=>{
+         dispatch(setUserLogged(val))
+       },
     }
 }
-
-export default connect(_mapStateToProps)(LoginForm);
+export default connect(null,_mapDispatchToProps)(LoginForm);
