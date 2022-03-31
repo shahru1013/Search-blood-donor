@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from 'axios';
+import { connect } from 'react-redux'
 import { checkUserValidity, validateLoginData } from "../pages/login/functions";
 import "../styles/login.css";
-export default function LoginForm() {
+import { setUserLogged , incr} from "../pages/login/action";
+function LoginForm( props ) {
   const [redirectSignup, setRedirectSignup] = useState(false);
   const [validationErr, setValidationErr] = useState({});
   const [formData, setFormData] = useState({});
@@ -16,6 +18,11 @@ export default function LoginForm() {
        setErrMessage(validateResult);
      }else{
        const loginStatus = await checkUserValidity(formData,axios);
+       if(loginStatus){
+          alert('login success')
+          setFormData({})
+          //props.dispatch(setUserLogged(true))
+       }
        /**Handle what if login success */
      }
   }
@@ -64,3 +71,10 @@ export default function LoginForm() {
     </div>
   );
 }
+
+const _mapStateToProps = (state) =>{
+    return{
+    }
+}
+
+export default connect(_mapStateToProps)(LoginForm);

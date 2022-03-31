@@ -1,0 +1,26 @@
+{
+  "name": "API",
+  "version": "1.0.0",
+  "description": "Creating Signin/Signup system using React.js, Node.js, mySQL and Redux.\r #To start the project\r #For API \r  -npm install\r  -npm start\r #For client\r  -npm install\r  -npm run start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahru1013/secure-signin-signup-system.git"
+  },
+  "author": "Shahru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahru1013/secure-signin-signup-system/issues"
+  },
+  "homepage": "https://github.com/shahru1013/secure-signin-signup-system#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}

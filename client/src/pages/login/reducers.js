@@ -11,11 +11,11 @@ const DEFAULT_STATE = {
  * action - Dispatching actions
  */
 export default (state = DEFAULT_STATE, action) =>{
-    switch (action.types) {
+    switch (action.type) {
         case SET_USER_LOGGED:
             return{
                 ...state,
-                isLogged: !action.isLogged
+                isLogged: action.isLogged
             }
     
         default:

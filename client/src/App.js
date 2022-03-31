@@ -22,9 +22,9 @@ function App({_isLogged}) {
   )
 }
 const _mapStateToProps = (state)=>{
-  console.log(state["pages/login"])
+  const isLogged  = state["pages/login"].isLogged;
   return{
-      _isLogged: state["pages/login"].isLogged
+      _isLogged: isLogged
   }
 }
 
