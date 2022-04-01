@@ -9,7 +9,15 @@ module.exports = async (formData, dbConnection, res)=>{
                 res: false
             });
          }else{
-            const isPassValid = validatePassword(result[0].password, formData.password);
+            if(!result[0]){
+                res.send({
+                    res: false,
+                    message:"User not found!"
+                });
+                return;
+            }
+
+            const isPassValid = validatePassword(result[0]?.password, formData?.password);
             if(isPassValid){
                 res.send({
                     res:true,
