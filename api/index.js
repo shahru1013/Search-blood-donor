@@ -16,4 +16,4 @@ require('dotenv').config();
 app.use('/api/login',loginRoute);
 app.use('/api/signup',signUpRoute);
 
-app.listen(process.env.PORT, ()=>console.log('listen ', process.env.PORT))
+app.listen(process.env.PORT || 8000, ()=>console.log('listen ', process.env.PORT || 8000))

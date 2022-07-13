@@ -1,0 +1,96 @@
+@media(min-width:800px) {
+    .news-news-cards {
+        display: flex;
+        justify-content: space-around;
+        padding: 3rem 0 0 0;
+    }
+    .news-card {
+        width: 90%;
+    }
+}
+
+.news-card {
+    border: solid #ccc 1px;
+    border-radius: 10px;
+    overflow: hidden;
+    line-height: 1.5rem;
+    padding-bottom: 10px;
+    margin: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.news-card img {
+    width: 100%;
+    height: 25vh;
+}
+.news-card .news-title {
+    font-weight: 500;
+    font-size: 16px;
+    text-align: left;
+    padding: 4px;
+}
+.news-card .news-description {
+    text-align: left;
+    color: #443838;
+    padding-left: 4px;
+}
+.button {
+    border-radius: 50px;
+    display: block;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    height: 3rem;
+    width: 90%;
+    line-height: 3rem;
+    margin: auto;
+    transition: all .3s ease;
+}
+.button:hover {
+    background: #2c2c2c;
+}
+.cart {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background: #fff;
+    box-shadow: 0px 0px 5px #d4d4d4;
+    font-size: 16px;
+    transition: all .5s ease;
+}
+.activo {
+    right: 0;
+}
+.cart #minicart {
+    padding: 1.3rem;
+}
+.cart #minicart .button {
+    margin-top: 2rem;
+}
+.cart table {
+    border-collapse: collapse;
+}
+.cart th, .cart td {
+    padding: 10px;
+    text-align: left;
+}
+.closecart {
+    font-size: 2rem;
+    position: absolute;
+    right: 10px;
+}
+.deletebtn {
+    display: block;
+    background: #E20000;
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    border-radius: 100%;
+    line-height: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}

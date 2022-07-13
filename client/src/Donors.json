@@ -1,0 +1,24 @@
+{
+    "donors":[
+      {
+        "id":1,
+        "age":34,
+        "name": "shahru",
+        "area":"Dhaka",
+        "bloodGroup": "B+",
+        "available": true,
+        "phone": "+8801787418344",
+        "gender": "male"
+       },
+       {
+        "id":2,
+        "age":24,
+        "name": "Nayeem",
+        "area":"Khulna",
+        "bloodGroup": "B+",
+        "available": true,
+        "phone": "+8801767543129",
+        "gender": "male"
+       }
+    ]
+  }

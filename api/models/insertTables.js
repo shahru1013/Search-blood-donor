@@ -10,6 +10,7 @@ module.exports  = async (formData, dbConnection, res) =>{
     try{
        await dbConnection.query(createTableQry);
     }catch(e){
+        console.log(e);
        res.send({
            res: false
        })
@@ -17,6 +18,7 @@ module.exports  = async (formData, dbConnection, res) =>{
     try{
        await dbConnection.query(insertQry,(err)=>{
            if(err){
+            console.log(err);
                 res.send({
                     res: false
                 })

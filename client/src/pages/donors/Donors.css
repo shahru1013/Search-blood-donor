@@ -1,0 +1,27 @@
+
+@media(min-width : 500px){
+    .Donors{
+        width : 100%;
+        margin: 10px auto;
+    }
+    .left{
+        width : 25%;
+        text-align: center;
+        height: 100%;
+        position: fixed;
+        overflow-y: hidden;
+        padding: 5px;
+        background-color: #EAE2E3;
+    }
+    
+    .center{
+        width : 85%;
+        flex: 2;
+        margin-left: 25%;
+        text-align: center;
+    }
+    .main-container{
+        display: flex;
+        margin-top: 50px;
+    }
+}
