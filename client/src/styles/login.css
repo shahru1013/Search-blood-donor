@@ -45,6 +45,25 @@
     padding: 14px 0px;
     text-indent: 10px;
 }
+.login-form select{
+    font: inherit;
+    letter-spacing: inherit;
+    color: currentColor;
+    padding: 4px 0 5px;
+    border: 0;
+    box-sizing: content-box;
+    height: 1.4375em;
+    margin: 0;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 14px 0px;
+    text-indent: 10px;
+    outline: none;
+}
 
 .login-form input:focus{
     outline: none;
@@ -53,7 +72,7 @@
 .login-form input[type="submit"]{
     color: #fff;
     background-color: #1976d2;
-    width: 100%;
+    width: 70%;
     margin-top: 24px;
     outline: 0;
     border: 0;
@@ -65,6 +84,8 @@
     text-transform: uppercase;
     padding: 6px 16px;
     border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .signup-button{
     display: flex;

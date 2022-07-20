@@ -10,6 +10,8 @@ export default function SignupForm() {
   const [formData, setFormData] = useState({});
   const [redirectLogin, setRedirectLogin] = useState(false);
   const [validationErr, setValidationErr] = useState({});
+  const [bloodGroup, setBloodGroup] = useState("");
+  const [gender, setGender] = useState("");
   const handleSignUpForm= async (e)=>{
      e.preventDefault();
      setValidationErr({});
@@ -39,20 +41,62 @@ export default function SignupForm() {
     })
   }
   return (
-    <div className="login-form-container">
+    <div className="login-form-container" style={{
+      maxWidth: "900px",
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      overflowY: 'auto'
+    }}>
       <div className="title-container">
-        <div className="title">
-          <span>SignUp</span>
+        <div className="title"  style={{
+        padding: '8%',
+        background: 'red',
+        color: 'white',
+        opacity: '0.5'
+      }}>
+          <span>BloodSaver</span>
         </div>
       </div>
       <div className="login-form">
         <form
           onSubmit={handleSignUpForm}
         >
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '50% 50%',
+            gridColumnGap: '10px'
+          }}>
           <input placeholder="Full Name *" type="text" required onChange={(e)=>handleInput(e, "name")}/>
+          <input placeholder="Phono No. *" type="text" required onChange={(e)=>handleInput(e, "email")}/>
+          <input placeholder="Address *" type="text" required onChange={(e)=>handleInput(e, "email")}/>
+          <select
+          required 
+          value={gender || ""} 
+          onChange={(e)=>setGender(e.target.value)} 
+          >
+          <option value="">Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          </select>
+          <select 
+            required
+            value={bloodGroup || ""} 
+            onChange={(e)=>setBloodGroup(e.target.value)} 
+          >
+          <option value="">Select blood group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          </select>
           <input placeholder="Email Address *" type="text" required onChange={(e)=>handleInput(e, "email")}/>
           <input type="password" placeholder="Password *" required onChange={(e)=>handleInput(e, "password")}/>
-          <input type="submit" value="SignUp"/>
+          </div>
+          <input style={{}} type="submit" value="SignUp"/>
         </form>
       </div>
       <div className="err-boundary">
@@ -60,10 +104,15 @@ export default function SignupForm() {
           <h3>{validationErr?.passErr}</h3>
           <h3>{validationErr?.nameErr}</h3>
         </div>
-      <div className="signup-button">
+      <div className="signup-button" style={{
+        
+      }}>
         <button
           onClick={() => {
             setRedirectLogin(true);
+          }}
+          style={{
+            marginLeft: '-12%'
           }}
         >
           Already have an account? Login

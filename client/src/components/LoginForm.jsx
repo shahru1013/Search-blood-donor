@@ -45,8 +45,13 @@ function LoginForm( { updateLogin, updateUserData } ) {
   return (
     <div className="login-form-container">
       <div className="title-container">
-        <div className="title">
-          <span>LogIn</span>
+        <div className="title" style={{
+        padding: '13%',
+        background: 'red',
+        color: 'white',
+        opacity: '0.5'
+      }}>
+          <span>BloodSaver</span>
         </div>
       </div>
       <div className="login-form">
