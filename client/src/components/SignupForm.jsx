@@ -67,12 +67,12 @@ export default function SignupForm() {
             gridColumnGap: '10px'
           }}>
           <input placeholder="Full Name *" type="text" required onChange={(e)=>handleInput(e, "name")}/>
-          <input placeholder="Phono No. *" type="text" required onChange={(e)=>handleInput(e, "email")}/>
-          <input placeholder="Address *" type="text" required onChange={(e)=>handleInput(e, "email")}/>
+          <input placeholder="Phono No. *" type="text" required onChange={(e)=>handleInput(e, "phone")}/>
+          <input placeholder="Address *" type="text" required onChange={(e)=>handleInput(e, "address")}/>
           <select
           required 
-          value={gender || ""} 
-          onChange={(e)=>setGender(e.target.value)} 
+          value={formData['gender'] || ""} 
+          onChange={(e)=>handleInput(e, "gender")} 
           >
           <option value="">Select gender</option>
           <option value="Male">Male</option>
@@ -80,8 +80,8 @@ export default function SignupForm() {
           </select>
           <select 
             required
-            value={bloodGroup || ""} 
-            onChange={(e)=>setBloodGroup(e.target.value)} 
+            value={formData['blood_group'] || ""} 
+            onChange={(e)=>handleInput(e, "blood_group")} 
           >
           <option value="">Select blood group</option>
           <option value="A+">A+</option>

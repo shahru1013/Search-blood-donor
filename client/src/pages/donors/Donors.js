@@ -14,6 +14,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { setDonors } from './action';
 import News from '../News/News';
+import { ToastContainer,toast } from 'react-toastify';
+import benefitsOfImage from '../../pictures/benefits-of-blood-donation.jpg';
+import eligibility from '../../pictures/eligible.png';
 // Material UI Imports end
 
 const styles = theme => ({
@@ -30,7 +33,8 @@ class Donors extends Component{
   state = {
     bloodGroup : '',
     donors : [],
-    possibleGroups : ''
+    possibleGroups : '',
+    requestDonor: {},
   }
 
   componentDidMount(){
@@ -94,8 +98,61 @@ class Donors extends Component{
     this.setState({donors, possibleGroups})
   };
 
-  clickedHandler = (id) => {
-   
+  clickedHandler = (donor) => {
+    this.setState({
+      requestDonor: donor
+    })
+  }
+  submitRequest =(e)=>{
+     e.preventDefault();
+    
+     toast(`Your request has been sent to ${this.state.requestDonor?.name}!`)
+     this.setState({
+      requestDonor: {}
+    })
+  }
+
+  /**
+   * 
+   * Request donors
+   */
+  requestDonor =()=>{
+    return(
+      <>
+        <div style={{
+          width: '40%',
+          height: 'auto',
+          backgroundColor: 'rgb(230, 227, 237)',
+          position: 'fixed',
+          transform: 'translate(-50%, -50%)',
+          top: '50%',
+          left: '50%',
+          borderRadius: 5,
+          marginLeft: '10%',
+          padding: '20px'
+        }}>
+          <div className='request-donor'>
+             <h3 style={{
+              color: '#222',
+              fontSize: 14,
+             }}>Request for donation to  <span style={{color: 'red', fontSize: 17}}>{this.state.requestDonor?.gender == 'male'?'Mr.':'Mrs.'} {this.state?.requestDonor?.name}</span></h3>
+             <form onSubmit={this.submitRequest}>
+             <input placeholder="Your full name *" type="text" required onChange={(e)=>{}}/>
+             <input placeholder="Patient full name *" type="text" required onChange={(e)=>{}}/>
+              <input placeholder="Your contact No. *" type="text" required onChange={(e)=>{}}/>
+              <input placeholder="Hospital address *" type="text" required onChange={(e)=>{}}/>
+              <input placeholder="Collection room no. *" type="text" required onChange={(e)=>{}}/>
+              <input  type="submit" value="Send request"/>
+              <input  type="button" onClick={()=>{
+                this.setState({
+                  requestDonor: {}
+                })
+              }} value="Cancel"/>
+             </form>
+          </div>
+        </div>
+      </>
+    )
   }
 
   render(){
@@ -119,7 +176,7 @@ class Donors extends Component{
               // disabled = {!this.props.isDonor 
               //               || this.props.requestedDonors.find((requestedDonors) => requestedDonors.to === donor.id)
               //               || donor.id === this.props.uid}
-              clicked = {() => this.clickedHandler(donor.id)}
+              clicked = {() => this.clickedHandler(donor)}
               phone = {donor.phone}/>
           )}else{
             return null;
@@ -130,8 +187,8 @@ class Donors extends Component{
         <div className = "main-container">
           <div className = "left">
             <div className='left-news'>
-              <News title="Benefits of become a blood donor" source="@starhealth.in" link="https://www.starhealth.in/blog/health-benefits-of-donating-blood"/>
-              <News title="Eligibility for donating blood" source="@redcrossblood.org" link="https://www.redcrossblood.org/donate-blood/how-to-donate/eligibility-requirements.html"/>
+              <News title="Benefits of become a blood donor" source="@starhealth.in" link="https://www.starhealth.in/blog/health-benefits-of-donating-blood" image={benefitsOfImage}/>
+              <News title="Eligibility for donating blood" source="@redcrossblood.org" link="https://www.redcrossblood.org/donate-blood/how-to-donate/eligibility-requirements.html" image={eligibility}/>
             </div>
           </div>
           <div className = "center" style={{ padding: '10px' }}>
@@ -164,6 +221,22 @@ class Donors extends Component{
             {donors}
             </div>
           </div>
+          { this.state.requestDonor?.name &&
+            this.requestDonor()
+          }
+           <div className="toast-mesage">
+        <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          />
+        </div>
           {/* <div className = "right">
             <BloodPic/>
           </div> */}
@@ -177,9 +250,6 @@ const mapStateToProps = state => {
   console.log('dnnn1',state["pages/donors"]);
   return{
      donors : donors,
-    // uid : state.auth.uid,
-    // isDonor : state.auth.isDonor,
-    // requestedDonors : state.auth.requestedDonors
   }
 }
 
